@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "thespis"
   spec.version       = Thespis::VERSION
   spec.authors       = ["Jacqueline Chenault"]
-  spec.email         = ["adigitalnative@gmail.com"]
+  spec.email         = ["jq@nativefoundry.com"]
 
   spec.summary       = "Sourcing auditions since 2016"
   spec.description   = "Scraper for various audition sources"
