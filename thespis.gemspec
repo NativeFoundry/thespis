@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Jacqueline Chenault"]
   spec.email         = ["adigitalnative@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Sourcing auditions since 2016"
+  spec.description   = "Scraper for various audition sources"
+  spec.homepage      = "https://github.com/NativeFoundry/thespis"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
@@ -26,6 +26,8 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency "nokogiri"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
