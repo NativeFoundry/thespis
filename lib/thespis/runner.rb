@@ -48,9 +48,8 @@ module Thespis
       html_doc = Nokogiri::HTML(body)
 
       company_info = html_doc.css("section.jobs-section")[0].text
-      details = html_doc.css("section.jobs-section")[1].children.to_s
-      details_second = html_doc.css("section.jobs-section")[2].to_html
-      { company: company_info, details: details + "<hr />" + details_second }
+      details = html_doc.css("section.jobs-section").to_html
+      { company: company_info, details: details }
     end
   end
 end
