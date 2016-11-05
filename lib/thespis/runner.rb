@@ -49,7 +49,8 @@ module Thespis
 
       company_info = html_doc.css("section.jobs-section")[0].text
       details = html_doc.css("section.jobs-section")[1].children.to_s
-      { company: company_info, details: details }
+      details_second = html_doc.css("section.jobs-section")[2].to_html
+      { company: company_info, details: details + "<hr />" + details_second }
     end
   end
 end
