@@ -23,15 +23,16 @@ module Thespis
       # Could do deeper searching, but the data isn't regular in how it's divided on the page.
       listings.flatten.map do |listing|
 
+
         # Request listing-specific data
         uri = URI.parse(listing[:url])
         response_body = Net::HTTP.get_response(uri).body
         html_doc = Nokogiri::HTML(response_body)
 
         # Parse data for specific chunks
-        company = html_doc.css(".jobs-section").children[1].children[0].text.strip
-        audition_type = html_doc.css(".jobs-section")[1].children[4].children[1].text.strip
-        contract = html_doc.css(".jobs-section")[1].children[4].children[6].text.strip
+        company = check_nil_and_set_value(html_doc.css(".jobs-section").children[1].children[0])
+        audition_type = check_nil_and_set_value(html_doc.css(".jobs-section")[1].children[4].children[1])
+        contract = check_nil_and_set_value(html_doc.css(".jobs-section")[1].children[4].children[6])
         # where = html_doc.css(".jobs-section")[2].children[4].text.strip # This might want additional parsing for address etc
         # to_prepare = html_doc.css(".jobs-section")[2].children[6].text.strip
 
@@ -46,6 +47,10 @@ module Thespis
           state: listing[:state]
         }
       end
+    end
+
+    def self.check_nil_and_set_value(element)
+      element && element.text ? element.text.strip : ""
     end
 
     def self.fetch_playbill(state)
